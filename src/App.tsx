@@ -5,7 +5,7 @@ import favicon from "./image/favicon.png";
 
 const GlobalStyle = createGlobalStyle`
   html{
-    background-color: #d0d0d0;
+    background-color: #6d7fa5;
   }
   body, h1, ul{
     margin: 0;

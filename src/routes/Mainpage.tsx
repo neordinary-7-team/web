@@ -1,9 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { popupAtom } from "../atoms";
 import Popup from "../hooks/Popup";
+import { datas } from "../data";
 
 const Toggle = styled.div`
   position: absolute;
@@ -12,34 +12,33 @@ const Toggle = styled.div`
   transform: translate(-50%, -50%);
   .title {
     color: #fff;
-    justify-content: center;
-    align-items: center;
-    margin-left: 120px;
+    margin-left: 0px;
+    font-size: 30px;
+    font-weight: 800;
   }
 `;
 const Box = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   border-radius: 50px;
-  padding: 30px;
-  margin: 20px 0 0 0;
+  padding-left: 60px;
+  padding-top: 20px;
+  height: 250px;
+  margin: 20px 0 0 0px;
+  font-size: 30px;
+  width: 300px;
   color: #fff;
-  align-items: center;
-  justify-content: center;
   background-color: #5d81d5;
   &:hover {
     cursor: pointer;
-    background-color: #d4cece;
+    background-color: #889cca;
   }
   .checkbox {
     margin: 0 0 0 0;
   }
 `;
-
+const Header = styled.div``;
 function Mainpage() {
-  const [title, setTitle] = useState("");
-  const [data, setData] = useState("");
-  const [uid, setUid] = useState("3");
   const [schedule, setSchedule] = useState("");
   const popup = useRecoilValue(popupAtom);
   const setPopup = useSetRecoilState(popupAtom);
@@ -47,34 +46,18 @@ function Mainpage() {
     setPopup(popup === "popup" ? "popup active" : "popup");
     setSchedule(e.target.innerText);
   };
-
-  const getData = async () => {
-    let url = `http://15.165.67.130:9000/schedules/${uid}`;
-    try {
-      const response = await axios({
-        method: "get",
-        url: url,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
-      setData(response.data.result.dates);
-      setTitle(response.data.result.groupName);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  console.log(data);
-  useEffect(() => {
-    getData();
-  }, []);
   return (
     <>
+      <Header></Header>
       <Toggle>
-        <div className="title">{title}</div>
-        <Box onClick={select}>{data}</Box>
-        <Popup toggle={select} value={data} />
+        <div className="title">{"모임"}</div>
+        <Box onClick={select}>
+          <span> {datas[0].date}</span>
+          <span> {datas[1].date}</span>
+          <span> {datas[2].date}</span>
+          <span> {datas[3].date}</span>
+        </Box>
+        <Popup toggle={select} value={""} />
       </Toggle>
     </>
   );

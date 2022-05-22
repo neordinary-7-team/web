@@ -1,32 +1,19 @@
 export const datas = [
   {
     key: "1",
-    date: "1번일정",
+    date: "2022-06-06",
   },
   {
     key: "2",
-    date: "2번일정",
+    date: "2022-06-10",
   },
   {
     key: "3",
-    date: "3번일정",
+    date: "2022-06-11",
   },
   {
     key: "4",
-    date: "4번일정",
+    date: "2022-06-15",
   },
 ];
 
-export const data1 = [
-  {
-    key: "1",
-    info1: "날짜1",
-    info2: "날짜2",
-    info3: "날짜3",
-    info4: "날짜4",
-    info5: "날짜5",
-    info6: "날짜6",
-    info7: "날짜7",
-    info8: "날짜8",
-  },
-];
